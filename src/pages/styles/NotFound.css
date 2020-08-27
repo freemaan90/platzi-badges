@@ -1,0 +1,9 @@
+.NotFound {
+	width: 100vh;
+	height: 100vh;
+}
+.container {
+	display: flex;
+	box-sizing: border-box;
+	box-shadow: none;
+}

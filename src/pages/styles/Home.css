@@ -1,0 +1,32 @@
+.Home__container {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	height: 100vh;
+	position: relative;
+}
+.Home__container::before {
+	content: '';
+	background: url('../../images/stars.svg');
+	background-repeat: repeat;
+	top: 0;
+	right: 0;
+	left: 0;
+	bottom: 0;
+	position: absolute;
+	opacity: 1;
+}
+.Home__Left {
+	position: relative;
+	height: 100vh;
+}
+.Home__Right {
+	position: relative;
+	height: 100vh;
+}
+.Home__logo {
+	width: 50vh;
+	height: 50vh;
+	padding: 1rem;
+	margin: 3rem;
+}
