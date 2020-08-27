@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
-import logo from '../images/Online_World.svg';
+import astronauts from '../images/astronauts.svg';
 import conf from '../images/platziconf-logo.svg';
 import '../pages/styles/Home.css';
+import Badges from './Badges';
+import { Link } from 'react-router-dom';
 class Home extends Component {
 	render() {
 		return (
@@ -10,10 +12,12 @@ class Home extends Component {
 					<img src={conf} alt="conf" />
 					<h1>PRINT YOUR BADGES</h1>
 					<p>The easiest way to manage your conference</p>
-					<button>Start Now</button>
+					<Link to={Badges} className="btn btn-primary">
+						Start Now
+					</Link>
 				</div>
 				<div className="Home__Right">
-					<img className="Home__logo" src={logo} alt="logo" />
+					<img className="Home__astronauts" src={astronauts} alt="logo" />
 				</div>
 			</div>
 		);

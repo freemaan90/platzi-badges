@@ -6,19 +6,28 @@
 	color: #ffffff;
 	display: flex;
 	align-items: center;
+	justify-content: center;
 }
 
 .Home__Left {
-	position: relative;
 	height: 100vh;
+	margin-top: 200px;
+	display: flex;
+	align-items: center;
+	flex-direction: column;
+}
+.Home__Left p {
+	padding: 1rem;
+	font-size: 1.6rem;
+}
+.Home__Left h1 {
+	padding-top: 1rem;
 }
 .Home__Right {
 	position: relative;
 	height: 100vh;
 }
-.Home__logo {
-	width: 50vh;
-	height: 50vh;
-	padding: 1rem;
-	margin: 3rem;
+.Home__astronauts {
+	padding: 3rem;
+	padding-left: 50px;
 }
