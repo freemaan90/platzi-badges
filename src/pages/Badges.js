@@ -8,6 +8,9 @@ class Badges extends Component {
 	constructor(props) {
 		super(props);
 		this.state = {
+			nextPage: 1,
+			loading: true,
+			error: null,
 			data: {
 				results: []
 			}
@@ -21,12 +24,25 @@ class Badges extends Component {
 	}
 
 	fetchCharacters = async () => {
-		const result = await fetch('https://rickandmortyapi.com/api/character/');
-		const data = await result.json();
+		this.setState({ loading: true, error: null });
+		try {
+			const result = await fetch(`https://rickandmortyapi.com/api/character?page=${this.state.nextPage}`);
+			const data = await result.json();
 
-		this.setState({
-			data: data
-		});
+			this.setState({
+				loading: false,
+				data: {
+					info: data.info,
+					results: [].concat(this.state.data.results, data.results)
+				},
+				nextPage: this.state.nextPage + 1
+			});
+		} catch (error) {
+			this.setState({
+				loading: false,
+				error: error
+			});
+		}
 	};
 
 	componentDidUpdate(prevProps, prevState) {
@@ -59,12 +75,14 @@ class Badges extends Component {
 				</div>
 
 				<div className="Badges__container">
-					<div className="Badges__buttons">
-						<Link to="/badges/new" className="btn btn-info">
-							New Character
-						</Link>
-					</div>
-					<BadgesList data={this.state.data.results} />
+					{!this.state.loading && (
+						<div className="Badges__buttons">
+							<button onClick={() => this.fetchCharacters()} className="btn btn-info">
+								Load More
+							</button>
+						</div>
+					)}
+					<BadgesList data {...this.state} />
 				</div>
 			</Fragment>
 		);
