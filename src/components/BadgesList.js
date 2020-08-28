@@ -2,6 +2,7 @@ import React, { Component, Fragment } from 'react';
 import './styles/BadgesList.css';
 import twitterLogo from '../images/twitterLogo.png';
 import { Link } from 'react-router-dom';
+import Gravatar from './Gravatar';
 class BadgesList extends Component {
 	render() {
 		if (this.props.badges.length === 0) {
@@ -21,7 +22,7 @@ class BadgesList extends Component {
 						<li key={badge.id}>
 							<div className="container">
 								<div className="left">
-									<img className="avatar" src={badge.avatarUrl} alt="avatar" />
+									<Gravatar className="avatar" email={badge.email} alt="avatar" />
 								</div>
 								<div className="right">
 									<div className="fullname">

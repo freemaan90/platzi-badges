@@ -3,6 +3,7 @@ import Badge from '../components/Badge';
 import header from '../images/platziconf-logo.svg';
 import BadgeFrom from '../components/BadgeFrom';
 import '../pages/styles/BadgeNew.css';
+import api from '../api';
 class BadgeNew extends Component {
 	state = {
 		form: {
@@ -23,6 +24,25 @@ class BadgeNew extends Component {
 		});
 	};
 
+	handleSubmit = async (e) => {
+		e.preventDefault();
+		this.setState({
+			loading: true,
+			error: null
+		});
+		try {
+			await api.badges.create(this.state.form);
+			this.setState({
+				loading: false
+			});
+		} catch (error) {
+			this.setState({
+				loading: false,
+				error: error
+			});
+		}
+	};
+
 	render() {
 		return (
 			<Fragment>
@@ -38,12 +58,15 @@ class BadgeNew extends Component {
 								lastName={this.state.form.lastName || 'LAST_NAME'}
 								twitter={this.state.form.twitter || 'TWITTER'}
 								jobTitle={this.state.form.jobTitle || 'JOB_TITLE'}
-								email={this.props.email || 'EMAIL'}
-								avatarUrl="http://2.gravatar.com/avatar/cfd63b3a9ea278f235a4ace9021b29f4"
+								email={this.state.form.email || 'EMAIL'}
 							/>
 						</div>
 						<div className="col-6">
-							<BadgeFrom onChange={this.handleChange} formValues={this.state.form} />
+							<BadgeFrom
+								onSubmit={this.handleSubmit}
+								onChange={this.handleChange}
+								formValues={this.state.form}
+							/>
 						</div>
 					</div>
 				</div>
