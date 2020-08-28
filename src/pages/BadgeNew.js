@@ -1,7 +1,8 @@
 import React, { Fragment, Component } from 'react';
 import Badge from '../components/Badge';
-import header from '../images/badge-header.svg';
+import header from '../images/rickandmorty.png';
 import BadgeFrom from '../components/BadgeFrom';
+import viejo from '../../src/images/viejo.png';
 import '../pages/styles/BadgeNew.css';
 class BadgeNew extends Component {
 	state = {
@@ -39,7 +40,7 @@ class BadgeNew extends Component {
 								twitter={this.state.form.twitter}
 								jobTitle={this.state.form.jobTitle}
 								email={this.props.email}
-								avatarUrl="http://2.gravatar.com/avatar/cfd63b3a9ea278f235a4ace9021b29f4"
+								avatarUrl={viejo}
 							/>
 						</div>
 						<div className="col-6">

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import astronauts from '../images/astronauts.svg';
-import conf from '../images/platziconf-logo.svg';
+import astronauts from '../images/logo.png';
+import conf from '../images/rickandmortyverde.png';
 import '../pages/styles/Home.css';
 import { Link } from 'react-router-dom';
 class Home extends Component {
@@ -9,9 +9,8 @@ class Home extends Component {
 			<div className="Home__container">
 				<div className="Home__Left">
 					<img src={conf} alt="conf" />
-					<h1>PRINT YOUR BADGES</h1>
-					<p>The easiest way to manage your conference</p>
-					<Link to="badges" className="btn btn-primary">
+					<p>Lista de personajes</p>
+					<Link to="badges" className="btn btn-info">
 						Start Now
 					</Link>
 				</div>

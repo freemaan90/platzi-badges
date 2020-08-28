@@ -13,6 +13,9 @@
 	display: flex;
 	justify-content: center;
 }
+.Badge__header img {
+	height: 70px;
+}
 
 .Badge__section-name {
 	display: flex;
