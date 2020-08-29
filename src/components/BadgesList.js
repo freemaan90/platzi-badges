@@ -1,8 +1,7 @@
 import React, { Component, Fragment } from 'react';
 import './styles/BadgesList.css';
-import twitterLogo from '../images/twitterLogo.png';
 import { Link } from 'react-router-dom';
-import Gravatar from './Gravatar';
+import BadgesListItem from './BadgesListItem';
 class BadgesList extends Component {
 	render() {
 		if (this.props.badges.length === 0) {
@@ -20,20 +19,9 @@ class BadgesList extends Component {
 				{this.props.badges.map((badge) => {
 					return (
 						<li key={badge.id}>
-							<div className="container">
-								<div className="left">
-									<Gravatar className="avatar" email={badge.email} alt="avatar" />
-								</div>
-								<div className="right">
-									<div className="fullname">
-										{badge.firstName} {badge.lastName}
-									</div>
-									<div className="twitter">
-										<img alt="Twitter logo" src={twitterLogo} className="tw-icon" />@{badge.twitter}
-									</div>
-									<div className="job">{badge.jobTitle}</div>
-								</div>
-							</div>
+							<Link className="text-reset text-decoration-none" to={`/badges/${badge.id}`}>
+								<BadgesListItem badge={badge} />
+							</Link>
 						</li>
 					);
 				})}

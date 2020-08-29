@@ -6,6 +6,7 @@ import BadgesList from '../components/BadgesList';
 import PageLoading from '../components/PageLoading';
 import PageError from '../components/PageError';
 import api from '../api';
+import MiniLoader from '../components/MiniLoader';
 
 class Badges extends Component {
 	constructor(props) {
@@ -15,7 +16,7 @@ class Badges extends Component {
 			error: null,
 			data: undefined
 		};
-		console.log('1. constructor()');
+		// console.log('1. constructor()');
 	}
 	fetchData = async () => {
 		this.setState({
@@ -38,31 +39,32 @@ class Badges extends Component {
 	};
 
 	componentDidMount() {
-		console.log('3. componentDidMount()');
+		// console.log('3. componentDidMount()');
 		this.fetchData();
+
+		this.intervalId = setInterval(this.fetchData, 5000);
 	}
 
 	componentDidUpdate(prevProps, prevState) {
-		console.log('5. componentDidUpdate()');
-		console.log({
-			prevProps: prevProps,
-			prevState: prevState
-		});
-
-		console.log({
-			props: this.props,
-			state: this.state
-		});
+		// console.log('5. componentDidUpdate()');
+		// console.log({
+		// 	prevProps: prevProps,
+		// 	prevState: prevState
+		// });
+		// console.log({
+		// 	props: this.props,
+		// 	state: this.state
+		// });
 	}
 
 	componentWillUnmount() {
-		console.log('6. componentWillUnmount()');
-		clearTimeout(this.timeOutId);
+		// console.log('6. componentWillUnmount()');
+		clearInterval(this.intervalId);
 	}
 
 	render() {
-		console.log('2/4. render()');
-		if (this.state.loading) {
+		// console.log('2/4. render()');
+		if (this.state.loading && !this.state.data) {
 			return <PageLoading />;
 		}
 		if (this.state.error) {
@@ -86,6 +88,7 @@ class Badges extends Component {
 					</div>
 
 					<BadgesList badges={this.state.data} />
+					{this.state.loading && <MiniLoader />}
 				</div>
 			</Fragment>
 		);
